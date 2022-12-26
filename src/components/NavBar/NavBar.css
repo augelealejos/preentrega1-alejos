@@ -1,0 +1,9 @@
+.NavBar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.NavBarMenu a {
+    margin: 0px 20px;
+}
