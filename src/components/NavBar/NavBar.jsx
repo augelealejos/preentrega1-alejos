@@ -1,19 +1,21 @@
+import { NavLink } from 'react-router-dom'
 import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.css'
 
 const NavBar = () => {
     return (
       <div className='NavBar'>
-        <span>Catalina</span>
+        <NavLink className='link-primary' to='/'><strong>Catalina</strong></NavLink>
         <nav className='NavBarMenu'>
-            <a href="/productos">Productos</a>
-            <a href="/productos-ocasion">Productos por ocasión</a>
-            <a href="/suscripcion">Suscripción</a>
-            <a href="/sucursales">Sucursales</a>
-            <a href="/recetas">Recetas</a>
-            <a href="/acerca-de">Acerca de</a>
+            <NavLink className={({ isActive })=> isActive ? 'link-light bg-primary' : 'link-primary'} to='/'>Inicio</NavLink>
+            <NavLink className={({ isActive })=> isActive ? 'link-light bg-primary' : 'link-primary'} to='/category/1'>Panadería</NavLink>
+            <NavLink className={({ isActive })=> isActive ? 'link-light bg-primary' : 'link-primary'} to='/category/2'>Pastelería</NavLink>
+            <NavLink className={({ isActive })=> isActive ? 'link-light bg-primary' : 'link-primary'} to='/suscripcion'>Suscripción</NavLink>
+            <NavLink className={({ isActive })=> isActive ? 'link-light bg-primary' : 'link-primary'} to='/sucursales'>Sucursales</NavLink>
+            <NavLink className={({ isActive })=> isActive ? 'link-light bg-primary' : 'link-primary'} to='/recetas'>Recetas</NavLink>
+            <NavLink className={({ isActive })=> isActive ? 'link-light bg-primary' : 'link-primary'} to='/acerca-de'>Acerca de</NavLink>
         </nav>
-        <CartWidget/>
+        <NavLink className='link-primary' to='/cart'><CartWidget/></NavLink>
       </div>
     )
 }
