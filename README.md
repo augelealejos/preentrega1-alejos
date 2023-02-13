@@ -13,12 +13,12 @@ npm install
 npm run dev
 
 ## Dependencias
-React            |  18.2.0 | Base framework
-React-router-dom |  6.6.2  | 
-Firebase         |  9.17.1 | Firestore Storage
-React-bootstrap  |  2.7.0  | Layout & Styles
-Booststrap       |  5.2.3  | Layout & Styles
-Font Awesome     |  6.2.1  | Iconos
+- React            |  18.2.0 | Base framework
+- React-router-dom |  6.6.2  | 
+- Firebase         |  9.17.1 | Firestore Storage
+- React-bootstrap  |  2.7.0  | Layout & Styles
+- Booststrap       |  5.2.3  | Layout & Styles
+- Font Awesome     |  6.2.1  | Iconos
 
 ## Demo
 https://magenta-griffin-6e3be9.netlify.app
