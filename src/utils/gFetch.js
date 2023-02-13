@@ -1,4 +1,4 @@
-let productos = [
+const items = [
     { 
         id: '1',
         categoryId: 2,
@@ -31,7 +31,7 @@ let productos = [
 export const gFetch = (id) => {
     return new Promise(( resolve, reject )=> {
         setTimeout(()=>{
-            resolve(id ? productos.find(producto => producto.id === id) : productos)
+            resolve(id ? items.find(item => item.id === id) : items);
         }, 1000)
     })
 } 

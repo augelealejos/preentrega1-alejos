@@ -1,15 +1,14 @@
-import { Container } from 'react-bootstrap'
-import Item from '../Item/Item'
-import './ItemList.css'
+import './ItemList.css';
+import Item from '../Item/Item';
 
-function ItemList({ productos }) {
+function ItemList({ items }) {
     return (
         <>{
-            productos.map((producto) =>
-                <Item key={producto.id} producto={producto}/>
+            items.map((item) =>
+                <Item key={item.id} item={item}/>
             )
         }</>
     )
 }
 
-export default ItemList
+export default ItemList;
