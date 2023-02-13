@@ -5,7 +5,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { useCartContext } from '../../context/CartContext';
 
 const CartWidget = () => {
-    const {sumItems} = useCartContext();
+    const { sumItems } = useCartContext();
 
     return (
         <span><FontAwesomeIcon icon={faShoppingCart} /><Badge bg='secondary'>{sumItems() > 0 ? sumItems() : ''}</Badge></span>

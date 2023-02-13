@@ -22,16 +22,16 @@ const CartContainer = () => {
         order.date = new Date();
 
         const db = getFirestore();
-        const queyCollection =  collection(db, 'orders');
-        addDoc(queyCollection, order).then(response => console.log(response)).catch(error => console.log(error));
-        
-        const batch = writeBatch(db);
+        const queyCollection = collection(db, 'orders');
+        addDoc(queyCollection, order).then(response => handleSuccess(db)).catch(error => console.log(error));
+    }
 
+    const handleSuccess = (db) => {
+        const batch = writeBatch(db);
         for (let index = 0; index < cartList.length; index++) {
             const element = cartList[index];
-            batch.update(doc(db, 'items', element.id), {stock: element.stock - element.quantity});
+            batch.update(doc(db, 'items', element.id), { stock: element.stock - element.quantity });
         }
-       
         batch.commit();
         clear();
     }
@@ -45,12 +45,12 @@ const CartContainer = () => {
 
     return (
         <>
-            { 
-                cartList.length > 0 
-                ?
+            {
+                cartList.length > 0
+                    ?
                     <Row>
                         <Col>
-                            <ListGroup>
+                            <ListGroup >
                                 <ListGroup.Item variant='primary'>
                                     <Row>
                                         <Col>Cantidad</Col>
@@ -70,7 +70,7 @@ const CartContainer = () => {
                                     </ListGroup.Item>
                                 ))}
                                 <ListGroup.Item className='d-grid gap-2' variant='light'>
-                                    { sumPrice() !== 0 &&  <strong>Precio total: {sumPrice()}</strong>  } 
+                                    {sumPrice() !== 0 && <strong>Precio total: {sumPrice()}</strong>}
                                 </ListGroup.Item>
                             </ListGroup>
                         </Col>
@@ -80,18 +80,18 @@ const CartContainer = () => {
                                     Orden
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                <Form className='d-grid gap-2' onSubmit={generate}>
+                                    <Form className='d-grid gap-2' onSubmit={generate}>
                                         <Form.Group className='mb-3' controlId='formName'>
                                             <Form.Label>Nombre</Form.Label>
-                                            <Form.Control name='name' type='text' value = {dataForm.name} onChange={hanleOnChange}   placeholder='Ingrese nombre' required />
+                                            <Form.Control name='name' type='text' value={dataForm.name} onChange={hanleOnChange} placeholder='Ingrese nombre' required />
                                         </Form.Group>
                                         <Form.Group className='mb-3' controlId='formPhone'>
                                             <Form.Label>Teléfono</Form.Label>
-                                            <Form.Control name='phone' type='text' value = {dataForm.phone} onChange={hanleOnChange}   placeholder='Ingrese teléfono' required />
+                                            <Form.Control name='phone' type='text' value={dataForm.phone} onChange={hanleOnChange} placeholder='Ingrese teléfono' required />
                                         </Form.Group>
                                         <Form.Group className='mb-3' controlId='formEmail'>
                                             <Form.Label>Email</Form.Label>
-                                            <Form.Control name='email' type='email' value = {dataForm.email} onChange={hanleOnChange}    placeholder='Ingrese email' required />
+                                            <Form.Control name='email' type='email' value={dataForm.email} onChange={hanleOnChange} placeholder='Ingrese email' required />
                                         </Form.Group>
                                         <Button size='md' variant='primary' type='submit'>
                                             Generar orden
@@ -101,7 +101,7 @@ const CartContainer = () => {
                             </ListGroup>
                         </Col>
                     </Row>
-                :
+                    :
                     <>
                         <Alert variant='warning'>¡Oops! Carrito vacío</Alert>
                         <Link className='d-grid gap-2' to={'/'}><Button size='md' variant='primary'>Volver a inicio</Button></Link>

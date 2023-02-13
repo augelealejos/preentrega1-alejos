@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 
 
 function ItemDetail({ item }) {
-    const [ isInCount, setIsInCount ] = useState(true);
+    const [isInCount, setIsInCount] = useState(true);
     const { cartList, addItem } = useCartContext();
 
-    const onAdd = (quantity)=>{
-        addItem( { ...item, quantity: quantity });
+    const onAdd = (quantity) => {
+        addItem({ ...item, quantity: quantity });
         setIsInCount(false);
     }
 
@@ -39,23 +39,23 @@ function ItemDetail({ item }) {
             </Col>
             <Col>
                 {
-                    isInCount ? 
-                        <ItemCount onAdd={onAdd} stock={item.stock} initial={handleInitial(item)}/>         
-                    : 
+                    isInCount ?
+                        <ItemCount onAdd={onAdd} stock={item.stock} initial={handleInitial(item)} />
+                        :
                         <Card>
                             <Card.Body>
                                 <Link className='d-grid gap-2' to={'/cart'}><Button size='md' variant='primary'>Ir al carrito</Button></Link>
                             </Card.Body>
                             <Card.Footer>
-                               <Link className='d-grid gap-2' to={'/'}><Button size='md' variant='success'>Seguir comprando</Button></Link>
+                                <Link className='d-grid gap-2' to={'/'}><Button size='md' variant='success'>Seguir comprando</Button></Link>
                             </Card.Footer>
                         </Card>
                 }
 
-                
+
             </Col>
         </Row>
-    )
+    );
 }
 
 export default ItemDetail;

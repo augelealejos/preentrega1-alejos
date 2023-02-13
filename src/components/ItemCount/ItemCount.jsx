@@ -2,7 +2,7 @@ import './ItemCount.css';
 import { useState } from 'react';
 import { Button, ButtonGroup, Card } from 'react-bootstrap';
 
-export const ItemCount = ({ initial = 1, stock, onAdd}) => {
+export const ItemCount = ({ initial = 1, stock, onAdd }) => {
     const [count, setCount] = useState(initial);
 
     const handlePlus = () => {

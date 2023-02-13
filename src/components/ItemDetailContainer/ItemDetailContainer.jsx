@@ -8,36 +8,32 @@ import { gFetch } from '../../firebase/config';
 function ItemDetailContainer() {
     const [loading, setLoading] = useState(true);
     const [item, setItem] = useState(null);
-    const {itemId} = useParams();
-    
+    const { itemId } = useParams();
+
     useEffect(() => {
-        gFetch({itemId: itemId})
+        gFetch({ itemId: itemId })
             .then(response => {
-                response.data() ? setItem({response: response.id, ...response.data()}) : setItem(null);
+                response.data() ? setItem({ id: response.id, ...response.data() }) : setItem(null);
             })
-            .catch(error => handleError())
+            .catch(error => console.log(error))
             .finally(() => setLoading(false))
     }, [itemId]);
 
-    const handleError = () => {
-        setItem(null);
-    }
-
     return (
         <>{
-            loading ? 
-            <Container className='text-center'><Spinner animation='grow' variant='primary' /></Container> :
-            <Container>
-                {item 
-                ? 
-                    <ItemDetail key={item.id} item={item} />
-                :
-                    <>
-                        <Alert variant='warning'>¡Oops! No existe este producto</Alert>
-                        <Link className='d-grid gap-2' to={'/'}><Button size='md' variant='primary'>Volver a inicio</Button></Link>
-                    </>
-                }
-            </Container>
+            loading ?
+                <Container className='text-center'><Spinner animation='grow' variant='primary' /></Container> :
+                <Container>
+                    {item
+                        ?
+                        <ItemDetail key={item.id} item={item} />
+                        :
+                        <>
+                            <Alert variant='warning'>¡Oops! No existe este producto</Alert>
+                            <Link className='d-grid gap-2' to={'/'}><Button size='md' variant='primary'>Volver a inicio</Button></Link>
+                        </>
+                    }
+                </Container>
         }</>
     );
 }
