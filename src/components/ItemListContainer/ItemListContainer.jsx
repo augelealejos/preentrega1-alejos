@@ -15,7 +15,7 @@ function ItemListContainer({ greeting }) {
             .then(response => {
                 setItems(response);
             })
-            .catch(error => console.log(error))
+            .catch(() => setItems([]))
             .finally(() => setLoading(false))
     }, [categoryId]);
 

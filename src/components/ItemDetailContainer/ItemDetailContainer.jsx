@@ -15,7 +15,7 @@ function ItemDetailContainer() {
             .then(response => {
                 response.data() ? setItem({ id: response.id, ...response.data() }) : setItem(null);
             })
-            .catch(error => console.log(error))
+            .catch(() => setItem(null))
             .finally(() => setLoading(false))
     }, [itemId]);
 
