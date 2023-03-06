@@ -17,7 +17,8 @@ function ItemDetail({ item }) {
 
     const handleInitial = (item) => {
         const quantity = cartList.find(element => element.id === item.id);
-        return quantity?.quantity ? quantity.quantity : 1;
+        return 1;
+        // return quantity?.quantity ? quantity.quantity : 1;
     }
 
     return (

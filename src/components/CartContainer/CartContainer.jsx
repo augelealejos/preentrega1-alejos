@@ -23,10 +23,11 @@ const CartContainer = () => {
 
         const db = getFirestore();
         const queyCollection = collection(db, 'orders');
-        addDoc(queyCollection, order).then(response => handleSuccess(db)).catch(error => console.log(error));
+        addDoc(queyCollection, order).then(response => handleSuccess(response, db)).catch(error => console.log(error));
     }
 
-    const handleSuccess = (db) => {
+    const handleSuccess = (response, db) => {
+        alert(`Lista tu orden: ${response.id}`); 
         const batch = writeBatch(db);
         for (let index = 0; index < cartList.length; index++) {
             const element = cartList[index];

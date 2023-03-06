@@ -10,7 +10,7 @@ export const CartContextProvider = ({ children }) => {
     const addItem = (item) => {
         const isIn = isInCart(item.id)
         if (isIn !== -1) {
-            cartList[isIn] = item;
+            cartList[isIn].quantity = cartList[isIn].quantity + item.quantity;
             setCartList([...cartList]);
         } else {
             setCartList([...cartList, item]);
